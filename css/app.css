@@ -1,0 +1,146 @@
+
+html, body {
+    height: 100%;
+}
+
+.app-container {
+    min-height: 100% !important;
+    height: 100% !important;
+}
+.top-bar {
+    height: 15% !important;
+    background-color: #333;
+}
+
+.middle-content {
+    height: 70% !important;
+    background-color: #000;
+}
+
+.bottom-bar {
+    height: 15% !important;
+    background-color: #333;
+    overflow: hidden;
+}
+
+.top-logo {
+    max-height: 100%;
+    height: 100%;
+}
+
+#ex1Slider .slider-selection {
+	background: #BABABA;
+}
+
+#ex1Slider .slider-handle {
+	background: #999;
+}
+
+.top-bar-margin {
+  margin-top: 15px;
+}
+
+.bottom-bar-margin {
+  margin-top: 15px;
+}
+
+.volume-bottom-bar-margin {
+  margin-top: 23px;
+}
+
+h1 {
+    color: white;
+}
+
+.cancion {
+    color: #eee;
+    font-size: x-large;
+}
+
+.album {
+    color: #eee;
+    font-size: small;
+}
+
+.artista {
+    color: #eee;
+}
+
+.resultados {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.reproduccion {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.item-resultado {
+    margin-top: 5px;
+}
+
+.item-reproduccion {
+    margin-top: 5px;
+}
+
+.mute-button {
+    margin-top: 5px;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: rgba(200, 200, 200, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(200,200,200, 0.6);
+  outline: 0 none;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+}
+
+.slider.slider-horizontal {
+    width: 150px !important;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    background-color: #333;
+} 
+
+.dropdown-menu li a:hover, dropdown-menu li a:active, dropdown-menu li a:focus {
+    background-color: #333;
+}
+
+li a, li a:hover {
+    color: #999;
+}
+
+.progress-bar {
+    background-color: #000 !important;
+}
+
+@media (max-width: 768px) {
+    .resultados {
+        overflow-y: visible !important;
+        height: auto;
+    }
+
+    .middle-content {
+        height: auto !important;
+        background-color: #000;
+    }
+}

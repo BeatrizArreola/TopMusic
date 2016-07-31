@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LaSalle Music Recommender</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap-slider.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <!--<script src="js/jquery-3.1.0.min.js"></script>-->
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-slider.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid app-container">
+        <div class="row top-bar">
+            <div class="col-xs-2 top-logo">
+                <img src="http://placehold.it/600x400" class="img-responsive top-logo">
+            </div>
+            <div class="col-xs-8">
+                <div class="form-group top-bar-margin">
+                    <div class="input-group">
+                        <input id="txtBusqueda" type="text" class="form-control" aria-label="...">
+                        <div class="input-group-btn">
+                            <button id="btnTipoBusqueda" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Canción <span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                            <li id="btnCancion"><a href="#">Canción</a></li>
+                            <li id="btnArtista"><a href="#">Artista</a></li>
+                            <li id="btnAlbum"><a href="#">Álbum</a></li>
+                            </ul>
+                        </div><!-- /btn-group -->
+                    </div><!-- /input-group -->
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group">
+                    <button class="btn btn-default top-bar-margin" type="button" id="btnBuscar">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row middle-content">
+            <div class="col-md-2">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation" class="active" id="optResultados"><a href="#">Resultados</a></li>
+                    <li role="presentation" id="optRecomendaciones"><a href="#">Recomendaciones</a></li>
+                    <li role="presentation" id="optAhoraSuena"><a href="#">Ahora suena</a></li>
+                </ul>
+            </div>
+            <div class="col-md-5 resultados" id="divResultados">
+                <h1>Resultados</h1>
+                <div id="contenedorResultados">
+                </div>
+            </div>
+            <div class="col-md-5 resultados" id="divRecomendaciones">
+                <h1>Recomendaciones</h1>
+                <div id="contenedorRecomendaciones">
+                </div>
+            </div>
+            <div class="col-md-5 resultados" id="divAhoraSuena">
+                <h1>Ahora suena</h1>
+                <div id="contenedorAhoraSuena">
+                </div>
+            </div>
+            <div class="col-md-5 reproduccion">
+                <h1>Lista de reproducción</h1>
+                <div id="contenedorReproduccion">
+                </div>
+            </div>
+        </div>
+        <div class="row bottom-bar">
+            <div class="col-xs-12" id="containerPlayer">
+            </div>
+        </div>
+    </div>
+  </body>
+  <script src="js/app.js"></script>
+</html>
