@@ -40,6 +40,7 @@ function doClickAhoraSuena(e) {
     e.preventDefault();
     mostrarAhoraSuena();
     obtenerAhoraSuena();
+    obtenerMasEscuchados();
 }
 
 function mostrarAhoraSuena() {
@@ -234,12 +235,25 @@ function obtenerRecomendaciones() {
                     for(i in response.artists) {
                         $("#contenedorRecomendaciones").append(crearItemArtista(response.artists[i]));
                     }
+                    $('.link-artista').off('click');
                     $(".link-artista").click(doClickLinkArtista);
                 }
             });
         }
     } else {
-        $("#contenedorRecomendaciones").append("<h3>Escucha canciones para obtener recomendaciones</h3>");
+        $("#contenedorRecomendaciones").append("<h3>Recomendaciones generales. Escucha mas canciones para obtener recomendaciones personalizadas</h3>");
+        
+        $.ajax({
+            url: 'https://api.spotify.com/v1/artists/3jPpqmUowZIrmPcrPyVkC7/related-artists',
+            data: {
+            },
+            success: function (response) {
+                for(i in response.artists) {
+                    $("#contenedorRecomendaciones").append(crearItemArtista(response.artists[i]));
+                }
+                $(".link-artista").click(doClickLinkArtista);
+            }
+        });
     }
 
 }
@@ -252,6 +266,68 @@ function obtenerAhoraSuena() {
         $("#contenedorAhoraSuena").append("<h3>No se ha reproducido ninguna canción</h3>");
     }
     
+}
+var artistasEscuchados = [];
+function obtenerMasEscuchados() {
+    $("#contenedorMasEscuchados").empty();
+    if (playlist.length > 0) {
+        artistasEscuchados = [];
+        for (i in playlist) {
+
+            var nuevoArtista = {
+                id : playlist[i].artists[0].id,
+                name: playlist[i].artists[0].name,
+                count: 0
+            }
+            if(existeEnArreglo(artistasEscuchados, nuevoArtista)) {
+                for(k in artistasEscuchados) {
+                    if (artistasEscuchados[k].id == nuevoArtista.id) {
+                        artistasEscuchados[k].count++;
+                        break;
+                    }
+                }
+            } else {
+                artistasEscuchados.push(nuevoArtista);
+            }
+        }
+        artistasEscuchados.sort(comparar);
+        var numArtistas = 0;
+        if(artistasEscuchados.length >= 3) {
+            numArtistas = 3;
+        } else {
+            numArtistas = artistasEscuchados.length;
+        }
+        for(var i=0; i < numArtistas; i++) {
+            $.ajax({
+                url: 'https://api.spotify.com/v1/artists/' + artistasEscuchados[i].id,
+                data: {
+                },
+                success: function (response) {
+                    $("#contenedorMasEscuchados").append(crearItemArtista(response));
+                    $(".link-artista").click(doClickLinkArtista);
+                }
+            });
+        }
+    } else {
+        $("#contenedorMasEscuchados").append("<h3>Escucha mas canciones para obtener estadisticas</h3>");
+    }
+}
+
+function comparar(a,b) {
+  if (a.count < b.count)
+    return 1;
+  if (a.count > b.count)
+    return -1;
+  return 0;
+}
+
+function existeEnArreglo(arreglo, elemento) {
+    for(i in arreglo) {
+        if (arreglo[i].id == elemento.id) {
+            return true;
+        }
+    }
+    return false;
 }
 
 function buscarCancionesAlbum(idalbum, nombreAlbum, imagenAlbum) {
